@@ -1,0 +1,43 @@
+# 🔧 General
+node_modules/
+.env
+.env.local
+.env.*.local
+dist/
+build/
+.DS_Store
+*.log
+
+# ⚙️ TypeScript
+*.tsbuildinfo
+
+# 💻 macOS
+.DS_Store
+
+# 🔐 Sensitive
+*.env
+*.pem
+*.key
+
+# 🚀 Vite (Client)
+client/dist/
+client/.vite/
+
+# ⚙️ Vite cache
+.vite
+
+# 🛠️ VSCode
+.vscode/
+*.code-workspace
+
+# 📦 Yarn/PNPM/Other package managers
+.pnpm-debug.log
+yarn.lock
+package-lock.json
+
+# 🐳 Docker
+*.container
+*.pid
+
+# 🧪 Testing
+c
