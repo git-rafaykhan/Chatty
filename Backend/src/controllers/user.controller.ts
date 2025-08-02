@@ -32,7 +32,8 @@ try {
     });
     
     if(newUser){
-        generateToken(newUser._id, res)
+       const token = generateToken(newUser._id, res);
+
           await newUser.save();
         console.log(hashPassword)
 

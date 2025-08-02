@@ -5,24 +5,23 @@ import cloudinary from "../lib/cloudinary";
 import { getReceiverSocketId, io } from "../lib/socket";
 
 
-export const getUsersForSide = async (req: Request, res: Response)=> {
+export const getUsersForSide = async (req: Request, res: Response) => {
   try {
-      
-    const userId = (req as any).user._id
-    const filterUser = await User.findById({_id : {$ne: userId}}).select("-password");
+    const userId = (req as any).user._id;
 
-    res.status(200).json({filterUser})
+    const users = await User.find({ _id: { $ne: userId } }).select("-password");
+
+    res.status(200).json(users);
   } catch (error) {
-    console.log(error);
-    res.status(400).json({message: "Error finding users for sidebar"})
+    console.error(error);
+    res.status(400).json({ message: "Error finding users for sidebar" });
   }
-}
+};
 
-export const getMessages = async (req: Request, res: Response)=> {
+export const getMessages = async (req: Request, res: Response) => {
   try {
     const { id: userToChatId } = req.params;
-    
-    const myId = (res as any).user._id;
+    const myId = (req as any).user._id;
 
     const messages = await Message.find({
       $or: [
@@ -36,7 +35,8 @@ export const getMessages = async (req: Request, res: Response)=> {
     console.log("Error in getMessages controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
-}
+};
+
 
 export const sendMessages = async (req: Request, res: Response)=> {
      try {

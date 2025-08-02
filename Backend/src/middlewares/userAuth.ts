@@ -43,7 +43,7 @@ const userAuth = async (req: AuthenticatedRequest, res: Response, next: NextFunc
     }
 
     req.user = user;
-    next(); // ✅ correct way to pass control
+    next(); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

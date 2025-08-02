@@ -8,7 +8,7 @@ router.post('/signup', signup);
 //@ts-ignore
 router.post('/signin', signin)
 
-router.post('/logout', logout)
+router.get('/logout', logout)
 //@ts-ignore
 router.put('/update-profile',userAuth, updateProfile)
 //@ts-ignore
