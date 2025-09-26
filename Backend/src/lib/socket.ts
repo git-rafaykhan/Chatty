@@ -7,11 +7,7 @@ const server = http.createServer(app);
 
 const userSocketMap: Record<string, string> = {}; 
 
-const io = new Server(server, {
-  cors: {
-    origin: ["http://localhost:5173"],
-  },
-});
+const io = new Server(server);
 
 export function getReceiverSocketId(userId: string): string | undefined {
   return userSocketMap[userId];
